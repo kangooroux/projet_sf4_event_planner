@@ -1,0 +1,10 @@
+body {
+    background-color: lightgray;
+}
+
+//Importer fontawesome
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+
+//Configuration & import de bulma
+$primary: #864747;
+@import "~bulma";
