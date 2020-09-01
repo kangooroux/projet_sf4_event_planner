@@ -1,0 +1,20 @@
+{% extends '_template.html.twig' %}
+
+{% block title %}Organisation{% endblock %}
+
+{% block content %}
+
+    <div class="section">
+
+        <h1 class="title">Organisation</h1>
+
+        {% include 'includes/flash.html.twig' %}
+
+        <div class="columns is-multiline">
+            {% include 'event/_event_list.html.twig' with {event_list: organized_event_list} %}
+        </div>
+
+    </div>
+
+
+{% endblock %}

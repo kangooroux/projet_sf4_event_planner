@@ -1,0 +1,12 @@
+{% for event in event_list %}
+
+    <div class="column is-one-third">
+        <div class="box">
+            <a href="#">{{ event.name }}</a>
+            <br>
+            <p>{{ event.description }}</p>
+            <p>Le {{ event.date|date('d/m/Y') }} à {{ event.location }}</p>
+        </div>
+    </div>
+
+{% endfor %}

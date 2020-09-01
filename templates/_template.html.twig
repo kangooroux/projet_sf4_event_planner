@@ -25,8 +25,16 @@
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
                 <a class="navbar-item" href="#">
-                    Evénements
+                    Evénements à venir
                 </a>
+                {% if is_granted("ROLE_USER") %}
+                    <a class="navbar-item" href="#">
+                        Participation
+                    </a>
+                    <a class="navbar-item" href="{{ path('event_organization') }}">
+                        Organisation
+                    </a>
+                {% endif %}
             </div>
 
             <div class="navbar-end">
@@ -34,6 +42,10 @@
 
                     <div class="navbar-item">
                         <div class="buttons">
+                            <a class="button is-primary is-small" href="{{ path('event_create') }}">
+                                <span class="icon"><i class="far fa-calendar-plus"></i></span>
+                                <strong>Créer un évévenement</strong>
+                            </a>
                             <a class="button is-primary is-small" href="{{ path('account_page') }}">
                                 <span class="icon"><i class="fas fa-user-circle"></i></span>
                                 <strong>{{ app.user.pseudo }}</strong>
@@ -43,15 +55,15 @@
                             </a>
                         </div>
                     </div>
-                    {% if is_granted("ROLE_EDITOR") %}
-                        <div class="navbar-item">
-                            <div class="buttons">
-                                <a class="button is-info is-small" href="#">
-                                    Back-office
-                                </a>
-                            </div>
-                        </div>
-                    {% endif %}
+{#                    {% if is_granted("ROLE_EDITOR") %}#}
+{#                        <div class="navbar-item">#}
+{#                            <div class="buttons">#}
+{#                                <a class="button is-info is-small" href="#">#}
+{#                                    Back-office#}
+{#                                </a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    {% endif %}#}
                 {% else %}
                     <div class="navbar-item">
                         <div class="buttons">
