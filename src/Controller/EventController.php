@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Event;
+use App\Form\AttendEventFormType;
 use App\Form\CreateEventFormType;
 use App\Form\DeleteEventFormType;
 use App\Repository\EventRepository;
@@ -78,8 +79,35 @@ class EventController extends AbstractController
     /**
      * @Route("/{id}", name="view")
      */
-    public function viewEvent(Event $event)
+    public function viewEvent(Event $event,Request $request)
     {
+
+        if ($this->isGranted('ROLE_USER', $event)){
+            $user = $this->getUser();
+            if (!$event->getAttend()->contains($user)) {
+                $form = $this->createForm(AttendEventFormType::class, $event);
+                $form->handleRequest($request);
+                if ($form->isSubmitted() && $form->isValid()) {
+                    $event->addAttend($user);
+                    $this->entityManager->flush();
+                    $this->addFlash('success', 'Vous êtes inscrit à l\'événement');
+                }
+            } elseif ($event->getAttend()->contains($user)) {
+                $form = $this->createForm(AttendEventFormType::class, $event);
+                $form->handleRequest($request);
+                if ($form->isSubmitted() && $form->isValid()) {
+                    $event->removeAttend($user);
+                    $this->entityManager->flush();
+                    $this->addFlash('success', 'Vous êtes désinscrit de l\'événement');
+                }
+            }
+
+            return $this->render('event/event.html.twig', [
+                'event' => $event,
+                'atttend_form' => $form->createView(),
+            ]);
+        }
+
         return $this->render('event/event.html.twig', [
             'event' => $event,
         ]);

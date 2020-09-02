@@ -11,16 +11,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="610f4c37-b248-483c-bb5c-9e3f6b9521f1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/event/_event_list_user.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EventController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Event.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Event.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/CreateEventFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/CreateEventFormType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/EventRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/EventRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/_template.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_template.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/event/_event_list.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/event/organization.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/event/organization.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/BaseFixture.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/BaseFixture.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/EventFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/EventFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/NoteRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/event/_event_list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/event/_event_list.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/event/_event_list_user.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/event/_event_list_user.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/event/event.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/event/event.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +151,7 @@
       <updated>1598859838379</updated>
       <workItem from="1598859839468" duration="21917000" />
       <workItem from="1598942505601" duration="30113000" />
-      <workItem from="1599030621145" duration="7218000" />
+      <workItem from="1599030621145" duration="15839000" />
     </task>
     <servers />
   </component>
@@ -185,5 +183,16 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="227" key="NewPhpClassDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1598877970853" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/templates/event/event.html.twig</url>
+          <line>17</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

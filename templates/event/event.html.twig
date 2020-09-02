@@ -8,6 +8,7 @@
 
         {% include 'includes/flash.html.twig' %}
 
+        <p>Participants: {{ event.attend|length }}</p>
         <p><strong>Description:</strong></p>
         <p>{{ event.description }}</p>
         <p><strong>Lieu:</strong></p>
@@ -15,7 +16,17 @@
         <p><strong>Date:</strong></p>
         <p>{{ event.date|date('m/d/Y') }}</p>
 
+        {% if is_granted("ROLE_USER") %}
+            {{ form_start(atttend_form) }}
 
+            {% if event.attend.contains(app.user) %}
+                <button type="submit" class="button is-primary is-fullwidth">Ne plus partticiper</button>
+            {% else %}
+                <button type="submit" class="button is-primary is-fullwidth">Participer</button>
+            {% endif %}
+
+            {{ form_end(atttend_form) }}
+        {% endif %}
     </div>
 
 {% endblock %}

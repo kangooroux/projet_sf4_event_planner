@@ -108,6 +108,35 @@ abstract class BaseFixture extends Fixture {
         //retourner une entité correspondant à une référence aléatoire
         $randomReference = $this->faker->randomElement($this->references[$groupName]);
         return $this->getReference($randomReference);
+    }
 
+    /**
+     * méthode pour récupérer une entité unique par son groupe de références
+     * @param string $groupName nom de groupe de référence
+     */
+    protected function getUniqueRandomReference(string $groupName)
+    {
+        // Vérifier si on a dèjà enregistrer les références du groupe demandé
+        if (!isset($this->references[$groupName])) {
+            // Si non on va rechercher les références
+            $this->references[$groupName] = [];
+
+            // On parcourt la liste de toutes les références (toutes classes confondues)
+            foreach ($this->referenceRepository->getReferences() as $key => $ref) {
+                // $key correspond à nos références
+                if (strpos($key, $groupName) === 0) {
+                    $this->references[$groupName][] = $key;
+                }
+            }
+        }
+
+        //Vérifier que l'on a récupéré des références
+        if ($this->references[$groupName] === []) {
+            throw new \Exception(sprintf('Aucune références trouvé pour le groupe "%s"', $groupName));
+        }
+
+        //retourner une entité correspondant à une référence aléatoire unique
+        $randomReference = $this->faker->unique()->randomElement($this->references[$groupName]);
+        return $this->getReference($randomReference);
     }
 }
