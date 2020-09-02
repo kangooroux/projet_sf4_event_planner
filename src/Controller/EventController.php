@@ -7,6 +7,7 @@ use App\Form\AttendEventFormType;
 use App\Form\CreateEventFormType;
 use App\Form\DeleteEventFormType;
 use App\Repository\EventRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,11 +20,13 @@ class EventController extends AbstractController
 {
     private $entityManager;
     private $eventRepository;
+    private $userRepository;
 
-    public function __construct(EntityManagerInterface $entityManager, EventRepository $eventRepository)
+    public function __construct(EntityManagerInterface $entityManager, EventRepository $eventRepository, UserRepository $userRepository)
     {
         $this->entityManager = $entityManager;
         $this->eventRepository = $eventRepository;
+        $this->userRepository = $userRepository;
     }
 
     /**
@@ -49,11 +52,13 @@ class EventController extends AbstractController
     }
 
     /**
-     * @Route("/participation", name="attend")
+     * @Route("/participation", name="attended")
      */
     public function attendedEvents()
     {
-
+        return $this->render('event/attended.html.twig', [
+            'attended_event_list' => $this->getUser()->getEventsAttended(),
+        ]);
     }
 
     /**

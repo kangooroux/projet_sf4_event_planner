@@ -1,0 +1,18 @@
+{% extends '_template.html.twig' %}
+
+{% block title %}Participations{% endblock %}
+
+{% block content %}
+
+    <div class="section">
+
+        <h1 class="title">Evénements participés</h1>
+
+        <div class="columns is-multiline">
+            {% include 'event/_event_list.html.twig' with {event_list: attended_event_list} %}
+        </div>
+
+    </div>
+
+
+{% endblock %}

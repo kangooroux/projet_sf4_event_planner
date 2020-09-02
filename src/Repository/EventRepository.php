@@ -56,10 +56,24 @@ class EventRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('e')
             ->andWhere('e.date > :val')
             ->setParameter('val', $value)
-            ->orderBy('e.id', 'DESC')
+            ->orderBy('e.date', 'ASC')
             ->setMaxResults(null)
             ->getQuery()
             ->getResult()
         ;
+    }
+
+    public function findEventsFromUser()
+    {
+
+        $value = new DateTime('now');
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.date > :val')
+            ->setParameter('val', $value)
+            ->orderBy('e.id', 'DESC')
+            ->setMaxResults(null)
+            ->getQuery()
+            ->getResult()
+            ;
     }
 }

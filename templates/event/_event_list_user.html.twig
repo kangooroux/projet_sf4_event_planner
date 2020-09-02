@@ -3,6 +3,7 @@
     <div class="column is-one-third">
         <div class="box">
             <h1 class="subtitle"><a href="{{ path('event_view', {id: event.id }) }}">{{ event.name }}</a></h1>
+            <p></p>
             <p>Participants: {{ event.attend|length }}</p>
             <p>Date: {{ event.date|date('d/m/Y') }}</p>
             <p>Lieu: {{ event.location }}</p>

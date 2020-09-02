@@ -28,7 +28,7 @@
                     Evénements à venir
                 </a>
                 {% if is_granted("ROLE_USER") %}
-                    <a class="navbar-item" href="#">
+                    <a class="navbar-item" href="{{ path('event_attended') }}">
                         Participations
                     </a>
                     <a class="navbar-item" href="{{ path('event_organization') }}">

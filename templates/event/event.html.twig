@@ -8,13 +8,14 @@
 
         {% include 'includes/flash.html.twig' %}
 
-        <p>Participants: {{ event.attend|length }}</p>
+        <p><strong>Participants:</strong> {{ event.attend|length }}</p>
         <p><strong>Description:</strong></p>
         <p>{{ event.description }}</p>
         <p><strong>Lieu:</strong></p>
         <p>{{ event.location }}</p>
         <p><strong>Date:</strong></p>
         <p>{{ event.date|date('m/d/Y') }}</p>
+        <p><strong>Organisateur:</strong> {{ event.author.pseudo }}</p>
 
         {% if is_granted("ROLE_USER") %}
             {{ form_start(atttend_form) }}
