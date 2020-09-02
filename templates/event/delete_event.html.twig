@@ -1,0 +1,29 @@
+{% extends '_template.html.twig' %}
+
+{% block title %}Supression{% endblock %}
+
+{% block content %}
+    <div class="section">
+        <h1 class="title">Supprimer événement</h1>
+
+        {% include 'includes/flash.html.twig' %}
+
+        <p><strong>Nom de l'événement:</strong></p>
+        <p>{{ event.name }}</p>
+        <p><strong>Description:</strong></p>
+        <p>{{ event.description }}</p>
+        <p><strong>Lieu:</strong></p>
+        <p>{{ event.location }}</p>
+        <p><strong>Date:</strong></p>
+        <p>{{ event.date|date('m/d/Y') }}</p>
+
+        {{ form_start(delete_edit_form) }}
+
+        <p><strong>Etes-vous sûr de vouloir supprimer cet événement ?</strong></p>
+        <br>
+        <button type="submit" class="button is-primary is-fullwidth" onclick="return confirm('Êtes-vous sur de vouloir supprimer ?')">Supprimer</button>
+
+        {{ form_end(delete_edit_form) }}
+    </div>
+
+{% endblock %}

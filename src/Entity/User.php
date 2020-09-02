@@ -46,9 +46,15 @@ class User implements UserInterface
      */
     private $events;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Event::class, mappedBy="attend")
+     */
+    private $eventsAttended;
+
     public function __construct()
     {
         $this->events = new ArrayCollection();
+        $this->eventsAttended = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -167,6 +173,34 @@ class User implements UserInterface
             if ($event->getAuthor() === $this) {
                 $event->setAuthor(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Event[]
+     */
+    public function getEventsAttended(): Collection
+    {
+        return $this->eventsAttended;
+    }
+
+    public function addEventsAttended(Event $eventsAttended): self
+    {
+        if (!$this->eventsAttended->contains($eventsAttended)) {
+            $this->eventsAttended[] = $eventsAttended;
+            $eventsAttended->addAttend($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEventsAttended(Event $eventsAttended): self
+    {
+        if ($this->eventsAttended->contains($eventsAttended)) {
+            $this->eventsAttended->removeElement($eventsAttended);
+            $eventsAttended->removeAttend($this);
         }
 
         return $this;

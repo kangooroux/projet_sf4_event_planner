@@ -11,9 +11,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="610f4c37-b248-483c-bb5c-9e3f6b9521f1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/templates/event/_event_list_user.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EventController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Event.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Event.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/CreateEventFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/CreateEventFormType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/EventRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/EventRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/_template.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_template.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/event/_event_list.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/event/organization.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/event/organization.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,12 +134,13 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\event_planner\templates\event" />
+      <recent name="C:\wamp64\www\event_planner\templates\includes" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\event_planner\templates\includes" />
       <recent name="C:\wamp64\www\event_planner\templates" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\event_planner\templates\includes" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -144,7 +152,8 @@
       <option name="presentableId" value="Default" />
       <updated>1598859838379</updated>
       <workItem from="1598859839468" duration="21917000" />
-      <workItem from="1598942505601" duration="16674000" />
+      <workItem from="1598942505601" duration="30113000" />
+      <workItem from="1599030621145" duration="7218000" />
     </task>
     <servers />
   </component>

@@ -1,0 +1,21 @@
+{% extends '_template.html.twig' %}
+
+{% block title %}Modifier{% endblock %}
+
+{% block content %}
+    <div class="section">
+        <h1 class="title">Modifier événement</h1>
+
+        {% include 'includes/flash.html.twig' %}
+
+        {{ form_start(event_edit_form) }}
+        {{ form_row(event_edit_form.name, {label: "Nom de l\'événement: "}) }}
+        {{ form_row(event_edit_form.description, {label: "Description: "}) }}
+        {{ form_row(event_edit_form.location, {label: 'Lieu: '}) }}
+        {{ form_row(event_edit_form.date, {label: 'Date: '}) }}
+
+        <button type="submit" class="button is-primary is-fullwidth">Modifier</button>
+        {{ form_end(event_edit_form) }}
+    </div>
+
+{% endblock %}

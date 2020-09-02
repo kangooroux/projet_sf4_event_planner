@@ -1,0 +1,21 @@
+{% for event in event_list %}
+
+    <div class="column is-one-third">
+        <div class="box">
+            <h1 class="subtitle"><a href="{{ path('event_view', {id: event.id }) }}">{{ event.name }}</a></h1>
+            <p>Date: {{ event.date|date('d/m/Y') }}</p>
+            <p>Lieu: {{ event.location }}</p>
+            <br>
+            <p>{{ event.description }}</p>
+            <br>
+            {% if is_granted('EDIT', event) %}
+                <a href="{{ path('event_edit', {id: event.id }) }}" class="button is-warning is-light">Editer</a>
+            {% endif %}
+            {% if is_granted('DELETE', event) %}
+                <a href="{{ path('event_delete', {id: event.id}) }}" class="button is-danger is-light" >Supprimer</a>
+
+            {% endif %}
+        </div>
+    </div>
+
+{% endfor %}

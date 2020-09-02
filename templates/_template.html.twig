@@ -24,15 +24,15 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item" href="#">
+                <a class="navbar-item" href="{{ path('event_list') }}">
                     Evénements à venir
                 </a>
                 {% if is_granted("ROLE_USER") %}
                     <a class="navbar-item" href="#">
-                        Participation
+                        Participations
                     </a>
                     <a class="navbar-item" href="{{ path('event_organization') }}">
-                        Organisation
+                        Organisations
                     </a>
                 {% endif %}
             </div>
@@ -55,15 +55,7 @@
                             </a>
                         </div>
                     </div>
-{#                    {% if is_granted("ROLE_EDITOR") %}#}
-{#                        <div class="navbar-item">#}
-{#                            <div class="buttons">#}
-{#                                <a class="button is-info is-small" href="#">#}
-{#                                    Back-office#}
-{#                                </a>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    {% endif %}#}
+
                 {% else %}
                     <div class="navbar-item">
                         <div class="buttons">

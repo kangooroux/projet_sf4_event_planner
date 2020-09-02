@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EventRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -42,6 +44,16 @@ class Event
      * @ORM\JoinColumn(nullable=false)
      */
     private $author;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="eventsAttended")
+     */
+    private $attend;
+
+    public function __construct()
+    {
+        $this->attend = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -104,6 +116,32 @@ class Event
     public function setAuthor(?User $author): self
     {
         $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getAttend(): Collection
+    {
+        return $this->attend;
+    }
+
+    public function addAttend(User $attend): self
+    {
+        if (!$this->attend->contains($attend)) {
+            $this->attend[] = $attend;
+        }
+
+        return $this;
+    }
+
+    public function removeAttend(User $attend): self
+    {
+        if ($this->attend->contains($attend)) {
+            $this->attend->removeElement($attend);
+        }
 
         return $this;
     }

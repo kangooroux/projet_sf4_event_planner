@@ -1,0 +1,21 @@
+{% extends '_template.html.twig' %}
+
+{% block title %}{{ event.name }}{% endblock %}
+
+{% block content %}
+    <div class="section">
+        <h1 class="title">{{ event.name }}</h1>
+
+        {% include 'includes/flash.html.twig' %}
+
+        <p><strong>Description:</strong></p>
+        <p>{{ event.description }}</p>
+        <p><strong>Lieu:</strong></p>
+        <p>{{ event.location }}</p>
+        <p><strong>Date:</strong></p>
+        <p>{{ event.date|date('m/d/Y') }}</p>
+
+
+    </div>
+
+{% endblock %}

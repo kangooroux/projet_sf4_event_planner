@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Event;
 use App\Form\CreateEventFormType;
+use App\Form\DeleteEventFormType;
 use App\Repository\EventRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -59,7 +61,69 @@ class EventController extends AbstractController
     public function organizedEvents()
     {
         return $this->render('event/organization.html.twig', [
-            'organized_event_list' => $this->eventRepository->findBy(['author' => $this->getUser()->getId()]),
+            'organized_event_list' => $this->eventRepository->findBy(['author' => $this->getUser()->getId()], ['date' => 'ASC']),
+        ]);
+    }
+
+    /**
+     * @Route("", name="list")
+     */
+    public function eventList()
+    {
+        return $this->render('event/upcoming_events.html.twig', [
+            'upcoming_events_list' => $this->eventRepository->findEventsFromNow(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="view")
+     */
+    public function viewEvent(Event $event)
+    {
+        return $this->render('event/event.html.twig', [
+            'event' => $event,
+        ]);
+    }
+
+    /**
+     * @Route("/edit/{id}", name="edit")
+     */
+    public function editEvent(Event $event, Request $request)
+    {
+        $this->denyAccessUnlessGranted('EDIT', $event);
+        $form = $this->createForm(CreateEventFormType::class, $event);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->entityManager->flush();
+            $this->addFlash('success', 'L\'événement a été mis à jour');
+        }
+
+        return $this->render('event/edit_event.html.twig', [
+            'event' => $event,
+            'event_edit_form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/delete/{id}", name="delete")
+     */
+    public function deleteEvent(Event $event, Request $request)
+    {
+        $this->denyAccessUnlessGranted('DELETE', $event);
+        $form = $this->createForm(DeleteEventFormType::class, $event);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->entityManager->remove($event);
+            $this->entityManager->flush();
+            $this->addFlash('danger', 'L\'événement a bien été supprimé');
+            return $this->redirectToRoute('event_organization');
+        }
+
+        return $this->render('event/delete_event.html.twig', [
+            'event' => $event,
+            'delete_edit_form' => $form->createView(),
         ]);
     }
 }

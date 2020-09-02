@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Event;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use DateTime;
 
 /**
  * @method Event|null find($id, $lockMode = null, $lockVersion = null)
@@ -47,4 +48,18 @@ class EventRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findEventsFromNow()
+    {
+
+        $value = new DateTime('now');
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.date > :val')
+            ->setParameter('val', $value)
+            ->orderBy('e.id', 'DESC')
+            ->setMaxResults(null)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }
