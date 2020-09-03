@@ -1,0 +1,5 @@
+<h1>Bonjour, </h1>
+
+<p>Vous avez reçu une invitation à participer à l'événement "{{ event.name }}" se déroulant le {{ event.date|date('d/m/Y')}} à <strong>{{ event.location }}</strong> et organisé par <strong>{{ event.author.pseudo }}</strong></p>
+
+<a href="{{ url('event_view', {id: event.id}) }}">{{ url('event_view', {id: event.id}) }}</a>

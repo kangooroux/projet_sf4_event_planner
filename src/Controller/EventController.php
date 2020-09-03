@@ -6,8 +6,10 @@ use App\Entity\Event;
 use App\Form\AttendEventFormType;
 use App\Form\CreateEventFormType;
 use App\Form\DeleteEventFormType;
+use App\Form\EventInvitationFormType;
 use App\Repository\EventRepository;
 use App\Repository\UserRepository;
+use App\Service\EmailSender;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,6 +23,7 @@ class EventController extends AbstractController
     private $entityManager;
     private $eventRepository;
     private $userRepository;
+    private $renderViewParameters = [];
 
     public function __construct(EntityManagerInterface $entityManager, EventRepository $eventRepository, UserRepository $userRepository)
     {
@@ -84,38 +87,36 @@ class EventController extends AbstractController
     /**
      * @Route("/{id}", name="view")
      */
-    public function viewEvent(Event $event,Request $request)
+    public function viewEvent(Event $event,Request $request, EmailSender $emailSender)
     {
+        $eventInvitationForm = $this->createForm(EventInvitationFormType::class);
+        $eventInvitationForm->handleRequest($request);
+
+        if ($eventInvitationForm->isSubmitted() && $eventInvitationForm->isValid()) {
+            $emailSender->sendEventInvitationEmail($eventInvitationForm->get('email')->getData(), $event);
+            $this->addFlash('success', 'L\'invitation a été envoyé');
+        }
 
         if ($this->isGranted('ROLE_USER', $event)){
             $user = $this->getUser();
-            if (!$event->getAttend()->contains($user)) {
-                $form = $this->createForm(AttendEventFormType::class, $event);
-                $form->handleRequest($request);
-                if ($form->isSubmitted() && $form->isValid()) {
+            $form = $this->createForm(AttendEventFormType::class, $event);
+            $form->handleRequest($request);
+            if ($form->isSubmitted() && $form->isValid()) {
+                if (!$event->getAttend()->contains($user)) {
                     $event->addAttend($user);
-                    $this->entityManager->flush();
                     $this->addFlash('success', 'Vous êtes inscrit à l\'événement');
-                }
-            } elseif ($event->getAttend()->contains($user)) {
-                $form = $this->createForm(AttendEventFormType::class, $event);
-                $form->handleRequest($request);
-                if ($form->isSubmitted() && $form->isValid()) {
+                } elseif ($event->getAttend()->contains($user)) {
                     $event->removeAttend($user);
-                    $this->entityManager->flush();
                     $this->addFlash('success', 'Vous êtes désinscrit de l\'événement');
                 }
+                $this->entityManager->flush();
             }
-
-            return $this->render('event/event.html.twig', [
-                'event' => $event,
-                'atttend_form' => $form->createView(),
-            ]);
+            $this->renderViewParameters['attend_form'] = $form->createView();
         }
+        $this->renderViewParameters['event'] = $event;
+        $this->renderViewParameters['event_invitation_form'] = $eventInvitationForm->createView();
 
-        return $this->render('event/event.html.twig', [
-            'event' => $event,
-        ]);
+        return $this->render('event/event.html.twig', $this->renderViewParameters);
     }
 
     /**

@@ -16,18 +16,30 @@
         <p><strong>Date:</strong></p>
         <p>{{ event.date|date('m/d/Y') }}</p>
         <p><strong>Organisateur:</strong> {{ event.author.pseudo }}</p>
+        <br>
 
         {% if is_granted("ROLE_USER") %}
-            {{ form_start(atttend_form) }}
+            {{ form_start(attend_form) }}
 
             {% if event.attend.contains(app.user) %}
-                <button type="submit" class="button is-primary is-fullwidth">Ne plus partticiper</button>
+                <button type="submit" class="button is-primary">Ne plus partticiper</button>
             {% else %}
-                <button type="submit" class="button is-primary is-fullwidth">Participer</button>
+                <button type="submit" class="button is-primary">Participer</button>
             {% endif %}
 
-            {{ form_end(atttend_form) }}
+            {{ form_end(attend_form) }}
         {% endif %}
+    </div>
+    <div class="section">
+        <h2 class="subtitle">Inviter à cet événement</h2>
+        <p>Vous pouvez envoyer une invitation en indiquant l'email de la personne concernée ci-dessous</p>
+        {{ form_start(event_invitation_form) }}
+
+            {{ form_row(event_invitation_form.email) }}
+
+            <button type="submit" class="button is-primary">Envoyer</button>
+
+        {{ form_end(event_invitation_form) }}
     </div>
 
 {% endblock %}
