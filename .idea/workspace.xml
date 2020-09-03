@@ -12,8 +12,12 @@
   <component name="ChangeListManager">
     <list default="true" id="610f4c37-b248-483c-bb5c-9e3f6b9521f1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EventController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/event/event.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/event/event.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/prod/monolog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/prod/monolog.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,6 +156,7 @@
       <workItem from="1598859839468" duration="21917000" />
       <workItem from="1598942505601" duration="30113000" />
       <workItem from="1599030621145" duration="30893000" />
+      <workItem from="1599117075491" duration="911000" />
     </task>
     <servers />
   </component>
@@ -171,10 +176,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="716" y="318" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1598865178282">
+    <state x="716" y="318" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1599117275408">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="716" y="318" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1598865178282" />
+    <state x="716" y="318" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1599117275408" />
     <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1599059150971">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

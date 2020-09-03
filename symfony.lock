@@ -272,7 +272,7 @@
         "version": "v5.1.5"
     },
     "symfony/monolog-bridge": {
-        "version": "v5.1.4"
+        "version": "v5.1.5"
     },
     "symfony/monolog-bundle": {
         "version": "3.3",
